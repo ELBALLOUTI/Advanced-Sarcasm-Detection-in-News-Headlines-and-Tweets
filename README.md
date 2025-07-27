@@ -10,20 +10,6 @@ This repository contains code and resources for fine-tuning transformer and trai
 
 ---
 
-## Citation
-
-If you use this work, please cite:
-
-```bibtex
-@misc{yourname2025sarcasm,
-  title={Advanced NLP Project: Sarcasm Detection},
-  author={El Ballouti},
-  year={2025},
-  howpublished={\url{https://github.com/ELBALLOUTI/Advanced-Sarcasm-Detection-in-News-Headlines-and-Tweets}}
-}
-```
-
----
 
 ## Datasets
 
@@ -54,50 +40,6 @@ If you use this work, please cite:
 | **Fast Bi-LSTM**     | val on headlines | 0.73     | 0.72     |
 | **LSTM H→T**         | cross-eval       | 0.68     | 0.67     |
 | **LSTM T→H**         | cross-eval       | 0.70     | 0.69     |
-
----
-
-## Usage
-
-
-1. **Prepare data**
-
-   * Place `Sarcasm_Headlines_Dataset.json` in the project root.
-   * Place `train.csv` and `test.csv` in the project root.
-
-2. **Run training**
-
-   * Fine-tune BERT on headlines:
-
-     ```bash
-     python train_bert.py --dataset headlines --lr 2e-5 --batch_size 16 --epochs 3
-     ```
-
-   * Train Bi-LSTM:
-
-     ```bash
-     python train_lstm.py --dataset combined --lr 1e-3 --batch_size 32 --epochs 5
-     ```
-
-   * Cross-evaluation scripts:
-
-     ```bash
-     python cross_eval.py --model bert --source headlines --target tweets
-     python cross_eval.py --model lstm --source tweets --target headlines
-     ```
-
-3. **Hyperparameter tuning**
-
-   ```bash
-   python tune_bert.py --grid lr 2e-5 3e-5 --batch_size 16 32 --epochs 2 3
-   python tune_lstm.py --lr 1e-3 5e-4 --batch_size 32 64
-   ```
-
----
-
-## Performance
-
-The fine-tuned BERT model achieves the strongest in-domain results (F1 ≥ 0.86) and remains competitive under cross-domain evaluation (F1 ≥ 0.78). LSTM-based models provide a lightweight alternative, with F1 scores down by \~0.1.
 
 ---
 
